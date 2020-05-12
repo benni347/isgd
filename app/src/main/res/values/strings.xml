@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Is.gd</string>
+    <string name="title">Is.gd für Andorid</string>
+    <string name="hint">Hier dein Link rein</string>
+    <string name="log">Log statistics for this link</string>
+    <string name="schort">Kürzen</string>
+</resources>
