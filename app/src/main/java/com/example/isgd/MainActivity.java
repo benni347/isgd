@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void test(View view) {
         TextView input = (TextView) findViewById(R.id.inpout);
-        String inputurl = (String) input.getText();
+        String inputurl = input.getText().toString();
         try {
             inputurl = URLEncoder.encode(inputurl, StandardCharsets.UTF_8.toString());
         } catch (UnsupportedEncodingException e) {
