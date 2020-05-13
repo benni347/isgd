@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-
     public void test(View view) {
         TextView input = (TextView) findViewById(R.id.inpout);
         String inputurl = input.getText().toString();
@@ -28,10 +27,8 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         TextView output = (TextView) findViewById(R.id.outpout);
         output.setText(inputurl);
-
 
     }
 }
