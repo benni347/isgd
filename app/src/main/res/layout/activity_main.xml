@@ -43,17 +43,15 @@
         app:layout_constraintVertical_bias="0.087" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/stats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="false"
         android:text="@string/log"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.183" />
+        app:layout_constraintTop_toBottomOf="@+id/outpout" />
 
     <Button
         android:id="@+id/button"
@@ -66,32 +64,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.251" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.317">
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/stats"
+        app:layout_constraintVertical_bias="0.095" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/outpout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
         android:layout_marginBottom="454dp"
         android:hint="@string/output"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/inpout"
+        app:layout_constraintVertical_bias="0.448" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
