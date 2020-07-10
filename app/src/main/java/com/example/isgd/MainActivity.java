@@ -1,14 +1,13 @@
 package com.example.isgd;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.baeldung.httprequest.ParameterStringBuilder;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -17,14 +16,9 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,12 +26,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (android.os.Build.VERSION.SDK_INT > 9)
-        {
-            StrictMode.ThreadPolicy policy = new
-                    StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
+        StrictMode.ThreadPolicy policy = new
+                StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     public static String executePost(String targetURL, String urlParameters) {
@@ -58,16 +49,16 @@ public class MainActivity extends AppCompatActivity {
             connection.setUseCaches(false);
             connection.setDoOutput(true);
 
-            //Send request
+            // Send request
             DataOutputStream wr = new DataOutputStream (
                     connection.getOutputStream());
             wr.writeBytes(urlParameters);
             wr.close();
 
-            //Get Response
+            // Get Response
             InputStream is = connection.getInputStream();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-            StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
+            StringBuilder response = new StringBuilder();
             String line;
             while ((line = rd.readLine()) != null) {
                 response.append(line);
@@ -95,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         return sb.toString();
     }
 
-    public void test(View view) throws MalformedURLException {
-        TextView input = (TextView) findViewById(R.id.inpout);
+    public void test(View view) {
+        TextView input = findViewById(R.id.inpout);
 
         // Does the user want statistics to be logged?
         boolean logStats = ((CheckBox) findViewById(R.id.stats)).isChecked();
@@ -111,14 +102,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Build the string with the url parameters (after the "create.php")
-        String urlParameters = new StringBuilder()
-                .append("format=simple")
-                .append("&url=").append(inputurl)
-                .toString();
+        String urlParameters = "format=simple" + "&url=" + inputurl;
 
         // Are stats to be logged?
         // If so, append "logstats=1" to urlParameters
-        if (logStats) urlParameters = new StringBuilder(urlParameters).append("&logstats=1").toString();
+        if (logStats) urlParameters = urlParameters + "&logstats=1";
 
         // Is there an inputurl which is to be shortened?
         // Only do a http call, IF there's a long URL
@@ -126,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             String shortURL;
             shortURL = MainActivity.executePost(getString(R.string.create_url_base), urlParameters);
 
-            TextView output = (TextView) findViewById(R.id.outpout);
+            TextView output = findViewById(R.id.outpout);
             output.setText(shortURL);
         }
     }
