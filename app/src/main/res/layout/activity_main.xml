@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contextClickable="false"
-        android:onClick="test"
+        android:onClick="click_kuerzen"
         android:text="@string/schort"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
