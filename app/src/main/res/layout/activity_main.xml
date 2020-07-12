@@ -38,7 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:checked="false"
+        android:onClick="click_stats"
         android:text="@string/log"
+        app:layout_constraintBottom_toTopOf="@+id/output_stats_url"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/outpout" />
@@ -47,21 +49,24 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:contextClickable="false"
         android:onClick="click_kuerzen"
         android:text="@string/schort"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stats"
+        app:layout_constraintTop_toBottomOf="@+id/output_stats_url"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/outpout"
         android:layout_width="0dp"
         android:layout_height="39dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/output"
+        android:inputType="none|text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input" />
@@ -70,12 +75,27 @@
         android:id="@+id/input"
         android:layout_width="0dp"
         android:layout_height="39dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/input"
         android:importantForAutofill="no"
+        android:inputType="textUri"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:inputType="textUri"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/output_stats_url"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autofillHints="none"
+        android:ems="10"
+        android:hint="@string/output_stats"
+        android:inputType="none|text"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

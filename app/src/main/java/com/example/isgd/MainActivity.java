@@ -3,13 +3,17 @@ package com.example.isgd;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
@@ -21,6 +25,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void click_stats(View view) {
+        // Find the checkbox "log stats?"
+        CheckBox cb_stats = findViewById(R.id.stats);
+        // Does the user want statistics to be logged?
+        boolean logStats = cb_stats.isChecked();
+        // Find the field for the stats URL
+        EditText et_stats_url = findViewById(R.id.output_stats_url);
+
+        // Set eb_stats_url to visible or invisible, depending on logStats
+        if (logStats)
+            et_stats_url.setVisibility(View.VISIBLE);
+        else
+            et_stats_url.setVisibility(View.INVISIBLE);
     }
 
     public void click_kuerzen(View view) {
@@ -87,10 +106,37 @@ public class MainActivity extends AppCompatActivity {
     private void handleShortURL(Intent data) {
         TextView output;
         String shortURL;
+        URL shortURL_URL;
+        URL urlBase;
+        String statsURL;
 
         shortURL = data.getStringExtra(ShortenUrlIntentService.URL_RESULT_EXTRA);
+
         output = findViewById(R.id.outpout);
         output.setText(shortURL);
+
+        // Should stats be logged? If so, print stats URL
+        // Find the checkbox "log stats?"
+        CheckBox cb_stats = findViewById(R.id.stats);
+        // Does the user want statistics to be logged?
+        boolean logStats = cb_stats.isChecked();
+        // Find the field for the stats URL
+        EditText et_stats_url = findViewById(R.id.output_stats_url);
+
+        try {
+            // Eg. https://is.gd/HN91Dy
+            shortURL_URL = new URL(shortURL);
+            urlBase = new URL(getString(R.string.create_url_base));
+
+            // https://is.gd/stats.php?url=HN91Dy
+            statsURL = urlBase.getProtocol() + "://"
+                    + urlBase.getAuthority() + "/"
+                    + "stats.php?url="
+                    + shortURL_URL.getPath().substring(1);
+            et_stats_url.setText(statsURL);
+        } catch (MalformedURLException e) {
+            Log.d("shortURL", "The returned Short URL is not valid. " + e.getMessage());
+        }
     }
 
     private void handleError(Intent data) {
