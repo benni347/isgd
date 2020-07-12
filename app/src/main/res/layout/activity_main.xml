@@ -40,36 +40,23 @@
         android:checked="false"
         android:onClick="click_stats"
         android:text="@string/log"
-        app:layout_constraintBottom_toTopOf="@+id/output_stats_url"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outpout" />
+        app:layout_constraintTop_toBottomOf="@+id/shortUrl" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:contextClickable="false"
         android:onClick="click_kuerzen"
         android:text="@string/schort"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/output_stats_url"
+        app:layout_constraintTop_toBottomOf="@+id/statsUrl"
         app:layout_constraintVertical_bias="0.0" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/outpout"
-        android:layout_width="0dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
-        android:hint="@string/output"
-        android:inputType="none|text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input" />
 
     <EditText
         android:id="@+id/input"
@@ -80,22 +67,74 @@
         android:hint="@string/input"
         android:importantForAutofill="no"
         android:inputType="textUri"
+        android:text="@string/default_long_url"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
-        android:id="@+id/output_stats_url"
+    <ImageButton
+        android:id="@+id/shareUrlButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/share_url_button"
+        android:onClick="click_url_share"
+        android:scaleType="matrix"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/stats"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_menu_share" />
+
+    <ImageButton
+        android:id="@+id/shareStatsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/share_url_button"
+        android:onClick="click_stats_share"
+        android:scaleType="matrix"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stats"
+        app:srcCompat="@android:drawable/ic_menu_share" />
+
+    <TextView
+        android:id="@+id/shortUrl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:autofillHints="none"
-        android:ems="10"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:autoLink="web"
+        android:hint="@string/output"
+        android:text="@string/output"
+        android:textIsSelectable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shareUrlButton"
+        app:layout_constraintTop_toBottomOf="@+id/input" />
+
+    <TextView
+        android:id="@+id/statsUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:autoLink="web"
         android:hint="@string/output_stats"
-        android:inputType="none|text"
+        android:text="@string/output_stats"
+        android:textIsSelectable="true"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/shareStatsButton"
         app:layout_constraintTop_toBottomOf="@+id/stats" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

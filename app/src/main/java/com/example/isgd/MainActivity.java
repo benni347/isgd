@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,13 +33,18 @@ public class MainActivity extends AppCompatActivity {
         // Does the user want statistics to be logged?
         boolean logStats = cb_stats.isChecked();
         // Find the field for the stats URL
-        EditText et_stats_url = findViewById(R.id.output_stats_url);
+        TextView tv_stats_url = findViewById(R.id.statsUrl);
+        // Find the field for the share stats button
+        ImageButton ib_share_stats = findViewById(R.id.shareStatsButton);
 
-        // Set eb_stats_url to visible or invisible, depending on logStats
-        if (logStats)
-            et_stats_url.setVisibility(View.VISIBLE);
-        else
-            et_stats_url.setVisibility(View.INVISIBLE);
+        // Set eb_stats_url & ib_share_stats to visible or invisible, depending on logStats
+        if (logStats) {
+            tv_stats_url.setVisibility(View.VISIBLE);
+            ib_share_stats.setVisibility(View.VISIBLE);
+        } else {
+            tv_stats_url.setVisibility(View.INVISIBLE);
+            ib_share_stats.setVisibility(View.INVISIBLE);
+        }
     }
 
     public void click_kuerzen(View view) {
@@ -80,6 +85,34 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void click_url_share(View view) {
+        TextView tv_shortUrl;
+        String shortURL;
+
+        tv_shortUrl = findViewById(R.id.shortUrl);
+        shortURL = tv_shortUrl.getText().toString();
+
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Short URL");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shortURL);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
+
+    public void click_stats_share(View view) {
+        TextView tv_statsUrl;
+        String statsURL;
+
+        tv_statsUrl = findViewById(R.id.statsUrl);
+        statsURL = tv_statsUrl.getText().toString();
+
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Statistik URL");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, statsURL);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
+
     /*
      This method gets called when the ShortenUrlIntentService is finished.
      It will either print the shortened URL or show an error message.
@@ -104,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleShortURL(Intent data) {
-        TextView output;
+        TextView tv_shortUrl, tv_statsUrl;
         String shortURL;
         URL shortURL_URL;
         URL urlBase;
@@ -112,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
 
         shortURL = data.getStringExtra(ShortenUrlIntentService.URL_RESULT_EXTRA);
 
-        output = findViewById(R.id.outpout);
-        output.setText(shortURL);
+        tv_shortUrl = findViewById(R.id.shortUrl);
+        tv_shortUrl.setText(shortURL);
 
         // Should stats be logged? If so, print stats URL
         // Find the checkbox "log stats?"
@@ -121,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         // Does the user want statistics to be logged?
         boolean logStats = cb_stats.isChecked();
         // Find the field for the stats URL
-        EditText et_stats_url = findViewById(R.id.output_stats_url);
+        tv_statsUrl = findViewById(R.id.statsUrl);
 
         try {
             // Eg. https://is.gd/HN91Dy
@@ -133,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                     + urlBase.getAuthority() + "/"
                     + "stats.php?url="
                     + shortURL_URL.getPath().substring(1);
-            et_stats_url.setText(statsURL);
+            tv_statsUrl.setText(statsURL);
         } catch (MalformedURLException e) {
             Log.d("shortURL", "The returned Short URL is not valid. " + e.getMessage());
         }
