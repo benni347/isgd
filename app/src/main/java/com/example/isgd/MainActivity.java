@@ -25,6 +25,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Get intent, action and MIME type
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if ("text/plain".equals(type)) {
+                handleSendText(intent); // Handle text being sent
+            }
+        } /* else {
+            // Handle other intents, such as being started from the home screen
+        } */
+    }
+
+    void handleSendText(Intent intent) {
+        String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);
+        if (sharedText != null) {
+            // Find the "input" field
+            TextView input = findViewById(R.id.input);
+            // Set the "long" original URL
+            input.setText(sharedText);
+
+            // Shorten the URL
+            trigger_shorten_url();
+        }
     }
 
     public void click_stats(View view) {
@@ -47,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void click_kuerzen(View view) {
+    public void trigger_shorten_url() {
         // Find the "input" field
         TextView input = findViewById(R.id.input);
         // Read the "long" original URL
@@ -83,6 +109,10 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(ShortenUrlIntentService.PENDING_RESULT_EXTRA, pendingResult);
             startService(intent);
         }
+    }
+
+    public void click_kuerzen(View view) {
+        trigger_shorten_url();
     }
 
     public void click_url_share(View view) {
