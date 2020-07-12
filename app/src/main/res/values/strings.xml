@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">is.gd</string>
     <string name="title">is.gd für Android</string>
-    <string name="hint">Hier dein Link rein</string>
-    <string name="log">Statistiken für den Aufruf loggen</string>
+    <string name="log">Statistiken für den Aufruf loggen?</string>
     <string name="schort">Kürzen</string>
+    <string name="input">Zu kürzende URL</string>
     <string name="output">Output für Link</string>
     <string name="create_url_base">https://is.gd/create.php</string>
 </resources>

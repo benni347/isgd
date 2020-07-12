@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void click_kuerzen(View view) {
         // Find the "input" field
-        TextView input = findViewById(R.id.inpout);
+        TextView input = findViewById(R.id.input);
         // Read the "long" original URL
         String inputUrl = input.getText().toString();
 
