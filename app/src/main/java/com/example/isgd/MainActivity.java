@@ -17,9 +17,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-public class MainActivity extends AppCompatActivity {
 
-    private static final int DOWNLOAD_REQUEST_CODE = 0;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
             // Handle other intents, such as being started from the home screen
         } */
     }
+    /*Add ads*/
+
+
+    final int DOWNLOAD_REQUEST_CODE = 0;
+
 
     void handleSendText(Intent intent) {
         String sharedText = intent.getStringExtra(Intent.EXTRA_TEXT);

@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">is.gd</string>
+    <string name="app_name" translatable="false">is.gd</string>
     <string name="title">is.gd für Android</string>
+
     <string name="log">Statistiken für Aufrufe loggen?</string>
     <string name="schort">Kürzen</string>
     <string name="input">Zu kürzende URL</string>
@@ -9,5 +10,13 @@
     <string name="create_url_base">https://is.gd/create.php</string>
     <string name="share_url_button">URL teilen</string>
     <string name="share_stats_button">URL teilen</string>
-    <string name="default_long_url">https://play.google.com/store/apps/details?id=xyz.skwar.isgd</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!--These Strings are used in the nav-header-file and that is used for the sidebar.-->
+    <string name="nav_header_title">ISGD Link shortener</string>
+    <string name="nav_header_desc">The official ISGD Icon</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 </resources>
