@@ -1,3 +1,4 @@
+/*
 package com.example.isgd.ui.home;
 
 import android.os.Bundle;
@@ -42,4 +43,4 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-}
+}*/

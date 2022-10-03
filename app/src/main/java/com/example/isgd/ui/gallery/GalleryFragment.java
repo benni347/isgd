@@ -1,3 +1,4 @@
+/*
 package com.example.isgd.ui.gallery;
 
 import android.os.Bundle;
@@ -42,4 +43,4 @@ public class GalleryFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-}
+}*/
