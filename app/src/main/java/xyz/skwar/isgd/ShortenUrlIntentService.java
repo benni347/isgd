@@ -1,4 +1,5 @@
-package com.example.isgd;
+package xyz.skwar.isgd;
+/* TODO: Change the intent method to a WorkManager class. */
 
 import android.app.IntentService;
 import android.app.PendingIntent;
