@@ -1,4 +1,4 @@
-package com.example.isgd;
+package com.skwar.isgd;
 
 import org.junit.Test;
 

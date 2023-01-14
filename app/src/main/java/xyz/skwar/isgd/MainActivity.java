@@ -1,4 +1,4 @@
-package com.example.isgd;
+package xyz.skwar.isgd;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import xyz.skwar.isgd.R;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;

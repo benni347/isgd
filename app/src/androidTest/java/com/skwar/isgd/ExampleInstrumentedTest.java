@@ -1,4 +1,4 @@
-package com.example.isgd;
+package com.skwar.isgd;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.isgd", appContext.getPackageName());
+        assertEquals("xyz.skwar.isgd", appContext.getPackageName());
     }
 }

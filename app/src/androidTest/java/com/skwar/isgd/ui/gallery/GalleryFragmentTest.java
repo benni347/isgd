@@ -1,4 +1,4 @@
-package com.example.isgd.ui.gallery;
+package com.skwar.isgd.ui.gallery;
 
 import junit.framework.TestCase;
 
